@@ -1,5 +1,6 @@
 /* Icons */
 import { icons } from '../theme/icons/tag';
+import { NodeJS } from '../theme/icons/tag/NodeJS';
 
 export const Hero = () => {
     return (
@@ -12,6 +13,9 @@ export const Hero = () => {
             <div className='tags'>
                 <span>
                     <icons.React /> React
+                </span>
+                <span>
+                    <NodeJS /> Node.js {/* как импортировать это через icons? */}
                 </span>
             </div>
         </section>
