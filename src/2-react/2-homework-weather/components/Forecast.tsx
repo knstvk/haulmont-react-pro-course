@@ -1,15 +1,27 @@
-import {Day} from "./Day";
+import {Day, DayProps} from "./Day";
+
+import data from '../mock-data/forecast.json';
 
 export const Forecast = () => {
+    const daysData: DayProps[] = data.slice(0, 6).map(it => {
+        return {
+            name: getDayName(new Date(it.day)),
+            temperature: it.temperature,
+            condition: it.type
+        }
+    })
+
     return (
         <div className="forecast">
-            <Day name={'Пятница'} condition={'cloudy'} temperature={17} isSelected={true}/>
-            <Day name={'Суббота'} condition={'cloudy'} temperature={19}/>
-            <Day name={'Понедельник'} condition={'cloudy'} temperature={18}/>
-            <Day name={'Вторник'} condition={'cloudy'} temperature={21}/>
-            <Day name={'Среда'} condition={'rainy'} temperature={16}/>
-            <Day name={'Четверг'} condition={'rainy'} temperature={19}/>
-            <Day name={'Пятница'} condition={'sunny'} temperature={26}/>
+            {daysData.map((it, idx) => {
+                const dayProps = {...it, isSelected: idx === 0}
+                return (<Day {...dayProps}/>)
+            })}
         </div>
     )
+}
+
+function getDayName(date: Date) {
+    const weekDays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
+    return weekDays[date.getDay()];
 }

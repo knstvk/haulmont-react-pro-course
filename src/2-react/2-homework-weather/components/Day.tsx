@@ -1,13 +1,13 @@
 import React from "react";
 
-interface Props {
+export interface DayProps {
     name: string;
-    condition: 'sunny' | 'cloudy' | 'rainy';
+    condition: string;
     temperature: number;
     isSelected?: boolean;
 }
 
-export const Day: React.FC<Props> = ({name, condition, temperature, isSelected}) => {
+export const Day: React.FC<DayProps> = ({name, condition, temperature, isSelected}) => {
     let classname = 'day ' + condition
     if (isSelected) {
         classname += ' selected'
